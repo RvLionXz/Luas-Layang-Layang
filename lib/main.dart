@@ -19,21 +19,20 @@ class _MyAppState extends State<MyApp> {
   TextEditingController diagonal2 = TextEditingController();
 
   void hitungLuas() {
-    setState(() {
-      double inputdiagonal1 = double.tryParse(diagonal1.text) ?? 0;
-      double inputdiagonal2 = double.tryParse(diagonal2.text) ?? 0;
+    double inputDiagonal1 = double.tryParse(diagonal1.text) ?? 0;
+    double inputDiagonal2 = double.tryParse(diagonal2.text) ?? 0;
 
-      double hasilPerhitungan = inputdiagonal1 * inputdiagonal2 / 2;
-      print(hasilPerhitungan);
-      hasil = hasilPerhitungan;
-      pesan = "Hasil luas layang-layang tersebut adalah : $hasil";
+    double luas = (inputDiagonal1 * inputDiagonal2) / 2;
+    hasil = luas;
+    print(hasil);
+    setState(() {
+      pesan = "Hasil luas layang layang adalah : $hasil";
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Padding(
           padding: const EdgeInsets.all(10),
@@ -42,39 +41,26 @@ class _MyAppState extends State<MyApp> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Aplikasi Menghitung Luas Layang Layang",
+                  "Aplikasi Menghitung luas layang-layang",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 10),
                 TextField(
                   controller: diagonal1,
-                  decoration: InputDecoration(
-                    labelText: "Input Diagoal 1",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(labelText: "Masukan Diagonal 1"),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 10),
                 TextField(
                   controller: diagonal2,
-                  decoration: InputDecoration(
-                    labelText: "Input Diagoal 2",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(labelText: "Masukan Diagonal 2"),
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: 20),
                 Text(
                   pesan,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 50),
-                ElevatedButton(onPressed: hitungLuas, child: Text("Hitung")),
+                SizedBox(height: 30),
+                ElevatedButton(onPressed: hitungLuas, child: Text("Hitung Hasil")),
               ],
             ),
           ),
